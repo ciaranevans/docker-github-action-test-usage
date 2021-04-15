@@ -5,6 +5,17 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+
+      - id: changed-files
+        name: get changed files
+        uses: jitterbit/get-changed-files@v1
+
+      - name: list changed files
+        run: |
+          for changed_file in ${{ steps.changed-files.outputs.all }}; do
+            echo "This PR changed: ${changed_file}."
+          done
+
       - name: process_recipe
         uses: ciaranevans/docker-github-action-test@main
         with:
