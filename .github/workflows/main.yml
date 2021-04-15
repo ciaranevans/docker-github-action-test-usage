@@ -4,6 +4,7 @@ jobs:
   process_recipe:
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v2
       - name: process_recipe
         uses: ciaranevans/docker-github-action-test@main
         with:
