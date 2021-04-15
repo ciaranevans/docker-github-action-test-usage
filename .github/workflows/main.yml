@@ -29,7 +29,7 @@ jobs:
               echo "This is a meta.yml in recipes: ${changed_file}";
             else
               echo "This is not a meta.yml in recipes: ${changed_file}";
-            done
+            fi
           done
 
       - name: process_recipe
