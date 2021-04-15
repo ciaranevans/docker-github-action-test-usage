@@ -5,6 +5,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: process_recipe
-        uses: ciaranevans/docker-github-action-test
+        uses: ciaranevans/docker-github-action-test@main
         with:
           path_to_meta_yml: "folder_1/folder_2/a_test_meta.yml"
