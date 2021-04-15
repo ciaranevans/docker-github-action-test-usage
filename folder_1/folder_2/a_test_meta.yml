@@ -1,0 +1,5 @@
+test:
+  packages:
+   - package-1==13.43.0
+   - package-2==24.2
+   - package-3==1.0.0

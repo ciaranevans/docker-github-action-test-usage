@@ -1,0 +1,10 @@
+on: [push]
+
+jobs:
+  process_recipe:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: process_recipe
+        uses: ciaranevans/docker-github-action-test
+        with:
+          path_to_meta_yml: "folder_1/folder_2/a_test_meta.yml"
