@@ -1,0 +1,5 @@
+test:
+  packages:
+   - ciaran-1==13.43.0
+   - ciaran-2==24.2
+   - ciaran-3==1.0.0

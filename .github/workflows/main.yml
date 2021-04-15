@@ -22,17 +22,18 @@ jobs:
           done
 
       - name: decide if meta.yml in pr
+        id: meta
         run: |
           for changed_file in ${{ steps.changed-files.outputs.all }}; do
             if [[ ${changed_file} =~ ^.*recipes\/.*meta.yml$ ]];
             then
-              echo "This is a meta.yml in recipes: ${changed_file}";
-            else
-              echo "This is not a meta.yml in recipes: ${changed_file}";
+              echo "'::set-output name=META_YAML::${changed_file}'";
+              break
             fi
           done
 
       - name: process_recipe
+        if: ${{ steps.meta.outputs.META_YAML }} != null
         uses: ciaranevans/docker-github-action-test@main
         with:
-          path_to_meta_yml: "folder_1/folder_2/a_test_meta.yml"
+          path_to_meta_yml: ${{ steps.meta.outputs.META_YAML }}
