@@ -33,7 +33,7 @@ jobs:
           done
 
       - name: process_recipe
-        if: ${{ steps.meta.outputs.META_YAML }} != ''
+        if: ${{ steps.meta.outputs.META_YAML != null }}
         uses: ciaranevans/docker-github-action-test@main
         with:
           path_to_meta_yml: ${{ steps.meta.outputs.META_YAML }}
