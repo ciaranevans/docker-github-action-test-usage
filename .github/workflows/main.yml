@@ -27,13 +27,13 @@ jobs:
           for changed_file in ${{ steps.changed-files.outputs.all }}; do
             if [[ ${changed_file} =~ ^.*recipes\/.*meta.yml$ ]];
             then
-              echo "'::set-output name=META_YAML::${changed_file}'";
+              echo "::set-output name=META_YAML::${changed_file}";
               break
             fi
           done
 
       - name: process_recipe
-        if: ${{ steps.meta.outputs.META_YAML }} != null
+        if: ${{ steps.meta.outputs.META_YAML }} != ''
         uses: ciaranevans/docker-github-action-test@main
         with:
           path_to_meta_yml: ${{ steps.meta.outputs.META_YAML }}
