@@ -21,16 +21,16 @@ jobs:
             echo "This PR changed: ${changed_file}."
           done
 
-      # - name: decide if meta.yml in pr
-      #   run: |
-      #     for changed_file in ${{ steps.changed-files.outputs.all }}; do
-      #       if [[ ${changed_file} =~ ^.*recipes\/.*meta.yml$ ]];
-      #       then
-      #         echo "This is a meta.yml in recipes: ${changed_file}";
-      #       else
-      #         echo "This is not a meta.yml in recipes: ${changed_file}";
-      #       done
-      #     done
+      - name: decide if meta.yml in pr
+        run: |
+          for changed_file in ${{ steps.changed-files.outputs.all }}; do
+            if [[ ${changed_file} =~ ^.*recipes\/.*meta.yml$ ]];
+            then
+              echo "This is a meta.yml in recipes: ${changed_file}";
+            else
+              echo "This is not a meta.yml in recipes: ${changed_file}";
+            done
+          done
 
       - name: process_recipe
         uses: ciaranevans/docker-github-action-test@main
