@@ -32,8 +32,14 @@ jobs:
             fi
           done
 
-      - name: process_recipe
+      - name: process_recipe from local copy
         if: ${{ steps.meta.outputs.META_YAML != null }}
         uses: ./.github/actions/local_action
+        with:
+          path_to_meta_yml: ${{ steps.meta.outputs.META_YAML }}
+
+      - name: process_recipe from repo
+        if: ${{ steps.meta.outputs.META_YAML != null }}
+        uses: ciaranevans/docker-github-action-test@main
         with:
           path_to_meta_yml: ${{ steps.meta.outputs.META_YAML }}
