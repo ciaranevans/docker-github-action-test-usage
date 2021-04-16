@@ -1,0 +1,12 @@
+name: 'Process Recipe'
+description: 'Takes a recipe, processes it and runs it on a bakery'
+inputs:
+  path_to_meta_yml:
+    description: 'Path to the meta.yml file of the recipe to process'
+    required: true
+    default: 'meta.yml'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.path_to_meta_yml }}
