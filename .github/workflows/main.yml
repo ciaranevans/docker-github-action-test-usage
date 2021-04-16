@@ -34,6 +34,6 @@ jobs:
 
       - name: process_recipe
         if: ${{ steps.meta.outputs.META_YAML != null }}
-        uses: .github/actions/local_action
+        uses: ./.github/actions/local_action
         with:
           path_to_meta_yml: ${{ steps.meta.outputs.META_YAML }}
